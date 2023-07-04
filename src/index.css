@@ -5,8 +5,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(213, 89, 222, 0.912);
-  background-image: url(../src/assets/arcade.png);
+  color: rgba(240, 240, 240, 0.912);
+  background-image: url(../src/assets/arcade2.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -145,3 +145,63 @@ body {
   cursor: pointer;
   font-size: 48px;
 }
+
+
+div.div.sound{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footerSection{
+  display: flex; 
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #181616b1;
+  flex-direction: row;
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px; 
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+  
+.footer-item {
+  
+ flex: 0 0 calc(33.33% - 20px);
+ max-width: calc(33.33% - 20px);
+ margin-bottom: 20px;
+ }
+  
+ h4 {
+    margin-bottom: 10px; }
+  a {
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .footer-item {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-item {
+    
+   
+flex: 0 0 100%;
+    
+   
+max-width: 100%;
+  }
+}
+
+  
+
+
+
+  
+

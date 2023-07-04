@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import confetti from 'canvas-confetti'
-import sound from "./assets/music.mp3"
-
+// import sound from "./assets/music.mp3"
+import AudioPlayer from 'react-h5-audio-player';
 import { Square } from './components/Square.jsx'
 import { TURNS } from './constants.js'
 import { checkWinnerFrom, checkEndGame } from './logic/board.js'
@@ -59,40 +59,58 @@ function App () {
   }
 
  //boton para escuchar musica (cara fachera facherita)
-  const [music, setMusic] = useState(null);
+  // const [music, setMusic] = useState(null);
+  // const [isPlaying, setIsPlaying] = useState(false);
+
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     music.currentTime = 0;
+  //     music.play();
+  //   }
+  // }, [isPlaying, music]);
+
+  // const togglePlayPause = () => {
+  //   if (isPlaying) {
+  //     pause();
+  //   } else {
+  //     play();
+  //   }
+  // };
+  
+  // const play = () => {
+  //   if (!isPlaying) {
+  //     setMusic(new Audio('src/assets/music.mp3'));
+  //     setIsPlaying(true);
+  //   }
+  // };
+
+  // const pause = () => {
+  //   if (isPlaying) {
+  //     music.pause();
+  //     setIsPlaying(false);
+  //   }
+  // };
+  
+
+  //LIBRERIA AUDIO-PLAYER
   const [isPlaying, setIsPlaying] = useState(false);
+  let audioRef = null;
+   const handlePlay = () => {
+    audioRef.
+    play();
+   };
 
-  useEffect(() => {
-    if (isPlaying) {
-      music.currentTime = 0;
-      music.play();
-    }
-  }, [isPlaying, music]);
-
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      pause();
-    } else {
-      play();
-    }
+   
+   const handlePause = () => {
+    setIsPlaying(false);
+    audioRef.
+    pause();
+   
   };
-  // const  audioURL = src'https://www.youtube.com/watch?v=2Z6rhJ0cGqY';
-  const play = () => {
-    if (!isPlaying) {
-      setMusic(new Audio('src/assets/music.mp3'));
-      setIsPlaying(true);
-    }
-  };
-
-  const pause = () => {
-    if (isPlaying) {
-      music.pause();
-      setIsPlaying(false);
-    }
-  };
-
- 
-
+  
+    
+    
+  
   return (
     <main className='board'>
       <h1>Ta Te Ti</h1>
@@ -123,15 +141,24 @@ function App () {
       </section>
 
       <WinnerModal resetGame={resetGame} winner={winner} />
-      <footer> 
-      <button onClick={togglePlayPause}>
-        {isPlaying ? '⏸' : '▶'}
-      </button>
+      
+
+      <div className='div.sound'> 
+      <button onClick={handlePlay}>▶</button>
+      <button onClick={handlePause}>⏸</button>
+      <audio ref={(element) => (audioRef = element)}>
+        <source src="\src\assets\music.mp3" type="audio/mp3" />
+      </audio>
+      </div> 
+       
+       <footer className='footerSection'> 
+       
         <a target='blank' href="https://www.youtube.com/watch?v=qkzcjwnueLA"  alt="video">Link al video referencia</a> 
        
+       <h4>Desarrollado por Carolina Pallaro</h4>
       </footer>
     </main>
   )
-}
+} 
 
 export default App
