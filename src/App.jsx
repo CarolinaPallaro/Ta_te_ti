@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import confetti from 'canvas-confetti'
 import sound from "./assets/music.mp3"
 import { Square } from './components/Square.jsx'
@@ -56,14 +56,44 @@ function App () {
     }
   }
 
-  function play(){
-    new Audio(sound).play()
-    console.log(play);
-  }
+ //boton para escuchar musica (cara fachera facherita)
+  const [music, setMusic] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (isPlaying) {
+      music.currentTime = 0;
+      music.play();
+    }
+  }, [isPlaying, music]);
+
+  const togglePlayPause = () => {
+    if (isPlaying) {
+      pause();
+    } else {
+      play();
+    }
+  };
+
+  const play = () => {
+    if (!isPlaying) {
+      setMusic(new Audio("src/assets/music.mp3"));
+      setIsPlaying(true);
+    }
+  };
+
+  const pause = () => {
+    if (isPlaying) {
+      music.pause();
+      setIsPlaying(false);
+    }
+  };
+
+ 
 
   return (
     <main className='board'>
-      <h1>Ta Te Ti👾</h1>
+      <h1>Tic tac toe</h1>
       <button onClick={resetGame}>Reset del juego</button>
       <section className='game'>
         {
@@ -92,7 +122,9 @@ function App () {
 
       <WinnerModal resetGame={resetGame} winner={winner} />
       <footer> 
-        <button onClick={play}>Music</button>
+      <button onClick={togglePlayPause}>
+        {isPlaying ? '⏸' : '▶'}
+      </button>
         <a target='blank' href="https://www.youtube.com/watch?v=qkzcjwnueLA"  alt="video">Link al video referencia</a> 
        
       </footer>
