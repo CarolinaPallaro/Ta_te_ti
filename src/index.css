@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(213, 89, 222, 0.912);
-  background-image: url(../public/arcade.png);
+  background-image: url(../src/assets/arcade.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
