@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import confetti from 'canvas-confetti'
 import sound from "./assets/music.mp3"
+
 import { Square } from './components/Square.jsx'
 import { TURNS } from './constants.js'
 import { checkWinnerFrom, checkEndGame } from './logic/board.js'
 import { WinnerModal } from './components/WinnerModal.jsx'
 import { saveGameToStorage, resetGameStorage } from './logic/storage/index.js'
+
 
 function App () {
   const [board, setBoard] = useState(() => {
@@ -74,10 +76,10 @@ function App () {
       play();
     }
   };
-
+  // const  audioURL = src'https://www.youtube.com/watch?v=2Z6rhJ0cGqY';
   const play = () => {
     if (!isPlaying) {
-      setMusic(new Audio("src/assets/music.mp3"));
+      setMusic(new Audio('src/assets/music.mp3'));
       setIsPlaying(true);
     }
   };
